@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8" /><title>Gradients</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin:0; padding:24px; background:#fff; font-family: var(--font-body); }
+  .grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; }
+  .g { border-radius:14px; padding:18px; min-height:84px; display:flex; flex-direction:column; justify-content:flex-end; }
+  .g .name { font-family:var(--font-display); font-weight:700; font-size:0.85rem; }
+  .g .code { font-size:0.7rem; opacity:0.85; }
+  .g.light .name, .g.light .code { color:var(--navy); }
+  .g.dark .name, .g.dark .code { color:white; }
+</style></head><body>
+  <div class="grid">
+    <div class="g light" style="background:linear-gradient(135deg, #00D97E, #6EDAFD)"><div class="name">--grad</div><div class="code">135deg, teal → sky</div></div>
+    <div class="g light" style="background:linear-gradient(135deg, #6EDAFD, #00D97E)"><div class="name">--grad-r</div><div class="code">135deg, sky → teal</div></div>
+    <div class="g light" style="background:linear-gradient(135deg, rgba(0,217,126,0.12), rgba(110,218,253,0.12))"><div class="name">--grad-soft</div><div class="code">12% tint pair</div></div>
+    <div class="g dark" style="background:linear-gradient(145deg, #0B1A3D 0%, #1A3060 100%)"><div class="name">--grad-navy</div><div class="code">145deg, navy → navy-mid</div></div>
+  </div>
+</body></html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8" /><title>Tags & Chips</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin:0; padding:32px; background:#fff; font-family:var(--font-body); }
+  .group { margin-bottom:18px; }
+  .label { font-size:0.65rem; color:var(--muted-light); letter-spacing:0.12em; text-transform:uppercase; font-weight:700; margin-bottom:10px; }
+  .row { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip {
+    background:rgba(110,218,253,0.12); border:1px solid rgba(110,218,253,0.25); color:#1A4A8F;
+    font-size:0.72rem; font-weight:600; padding:0.2rem 0.65rem; border-radius:5px;
+  }
+  .ai {
+    background:rgba(0,217,126,0.10); color:#0F5C42; border-color:rgba(0,217,126,0.25);
+  }
+  .pill {
+    background:rgba(110,218,253,0.10); border:1px solid rgba(0,217,126,0.35); color:#1A4A8F;
+    font-size:0.7rem; font-weight:700; letter-spacing:0.10em; text-transform:uppercase;
+    padding:6px 14px; border-radius:100px; display:inline-flex; align-items:center; gap:8px;
+  }
+  .dot { width:7px; height:7px; background:#00D97E; border-radius:50%; }
+  .duration {
+    background:rgba(110,218,253,0.10); border:1px solid rgba(110,218,253,0.30);
+    color:#1A4A8F; font-size:0.73rem; font-weight:600; padding:4px 12px; border-radius:100px;
+  }
+</style></head><body>
+  <div class="group"><div class="label">Tools / topic chips</div>
+    <div class="row">
+      <span class="chip">Excel</span>
+      <span class="chip">SQL</span>
+      <span class="chip">Power BI</span>
+      <span class="chip ai">GenAI</span>
+      <span class="chip ai">LangChain</span>
+      <span class="chip ai">AI Agents</span>
+    </div>
+  </div>
+  <div class="group"><div class="label">Status pill</div>
+    <div class="row"><span class="pill"><span class="dot"></span>Nasscom · Batch enrolling now</span></div>
+  </div>
+  <div class="group"><div class="label">Duration pill</div>
+    <div class="row"><span class="duration">10.5 mo</span><span class="duration">6 mo</span><span class="duration">Weekend</span></div>
+  </div>
+</body></html>

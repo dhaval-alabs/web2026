@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8" /><title>Holographic Background</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin:0; padding:0; font-family:var(--font-body); }
+  .canvas { position:relative; background:#F4FBFF; height:280px; overflow:hidden; }
+  .blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:0.45; }
+  .b1 { width:280px; height:280px; background:radial-gradient(circle, rgba(110,218,253,0.6), rgba(0,217,126,0.3)); top:-60px; left:-40px; }
+  .b2 { width:240px; height:240px; background:radial-gradient(circle, rgba(110,218,253,0.5), rgba(0,217,126,0.2)); top:30%; right:-50px; }
+  .b3 { width:160px; height:160px; background:radial-gradient(circle, rgba(110,218,253,0.4), transparent); bottom:-30px; left:30%; }
+  .grid {
+    position:absolute; inset:0;
+    background-image: linear-gradient(rgba(110,218,253,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(110,218,253,0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .label { position:absolute; left:20px; bottom:18px; font-size:0.74rem; color:var(--navy); font-weight:700; letter-spacing:0.08em; text-transform:uppercase; z-index:2; }
+</style></head><body>
+  <div class="canvas">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="grid"></div>
+    <div class="label">Holographic canvas — fixed background, z-index 0</div>
+  </div>
+</body></html>

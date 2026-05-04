@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head><meta charset="utf-8" /><title>Brand Palette</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin:0; padding:24px; background:#fff; font-family: var(--font-body); }
+  .group-label { font-size:0.66rem; color:var(--muted-light); letter-spacing:0.12em; text-transform:uppercase; font-weight:700; margin: 0 0 10px; }
+  .group-label + .group-label { margin-top:20px; }
+  .grid { display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; }
+  .swatch { border-radius:14px; overflow:hidden; border:1px solid rgba(11,26,61,0.08); background:white; }
+  .chip { height:78px; }
+  .meta { padding:10px 12px 11px; }
+  .name { font-family:var(--font-display); font-weight:700; font-size:0.78rem; color:var(--navy); }
+  .hex { font-size:0.68rem; color:var(--muted-light); font-variant-numeric: tabular-nums; margin-top:2px; }
+</style></head><body>
+
+  <div class="group-label">Originals · brand core</div>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#00D97E"></div><div class="meta"><div class="name">teal</div><div class="hex">#00D97E</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#6EDAFD"></div><div class="meta"><div class="name">sky</div><div class="hex">#6EDAFD</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#0B1A3D"></div><div class="meta"><div class="name">navy</div><div class="hex">#0B1A3D</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#1A3060"></div><div class="meta"><div class="name">navy-mid</div><div class="hex">#1A3060</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#1A4A8F"></div><div class="meta"><div class="name">navy-link</div><div class="hex">#1A4A8F</div></div></div>
+  </div>
+
+  <div class="group-label">Extended · CTAs + pastel tile surfaces</div>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#1DE5B5"></div><div class="meta"><div class="name">teal-bright</div><div class="hex">#1DE5B5</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFEA79"></div><div class="meta"><div class="name">yellow</div><div class="hex">#FFEA79</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#09263F"></div><div class="meta"><div class="name">ink</div><div class="hex">#09263F</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#C6F7EB"></div><div class="meta"><div class="name">teal-soft</div><div class="hex">#C6F7EB</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFF9C3"></div><div class="meta"><div class="name">yellow-soft</div><div class="hex">#FFF9C3</div></div></div>
+  </div>
+  <div class="grid" style="margin-top:10px;grid-template-columns:repeat(5,1fr);">
+    <div class="swatch"><div class="chip" style="background:#C6F0FF"></div><div class="meta"><div class="name">sky-soft</div><div class="hex">#C6F0FF</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#DBF9DD"></div><div class="meta"><div class="name">green-soft</div><div class="hex">#DBF9DD</div></div></div>
+    <div></div><div></div><div></div>
+  </div>
+</body></html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>AnalytixLabs — Courses</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="holo-bg">
+  <div class="holo-blob holo-blob-1"></div>
+  <div class="holo-blob holo-blob-2"></div>
+  <div class="holo-blob holo-blob-3"></div>
+  <div class="holo-blob holo-blob-4"></div>
+</div>
+<div class="holo-grid"></div>
+<div id="root" class="app"></div>
+
+<script type="text/babel" src="CourseCard.jsx"></script>
+<script type="text/babel">
+const { useState } = React;
+
+const COURSES = [
+  {
+    id: "ds-ai",
+    track: "Flagship",
+    badge: "Most Popular ✦",
+    title: "Data Science Specialization with AI",
+    description: "10.5-month flagship that takes you from spreadsheets to autonomous AI agents — and gets you hired.",
+    price: "₹58,000",
+    priceNote: "+ GST · 10.5 months · Full AI stack",
+    duration: "10.5 mo",
+    mode: "Live Online · Weekend",
+    highlights: [
+      { label: "Python", isAi: false },
+      { label: "SQL", isAi: false },
+      { label: "Power BI", isAi: false },
+      { label: "GenAI", isAi: true },
+      { label: "LangChain", isAi: true },
+      { label: "AI Agents", isAi: true }
+    ],
+    ctaLabel: "Reserve My Seat ↗",
+    variant: "primary",
+  },
+  {
+    id: "core-da",
+    track: "Foundation",
+    badge: "Track 1",
+    title: "Core Data Analytics",
+    description: "The complete foundation every analyst needs. Excel, SQL, Power BI, Python — through real industry projects.",
+    price: "₹52,000",
+    priceNote: "+ GST · 6 months · 38 live classes",
+    duration: "6 mo",
+    mode: "Live Online",
+    highlights: [
+      { label: "Excel" }, { label: "SQL" }, { label: "Power BI" }, { label: "Python" }
+    ],
+    ctaLabel: "Start with Core →",
+    variant: "secondary",
+  },
+  {
+    id: "ba",
+    track: "Business",
+    badge: "Career Switch",
+    title: "Business Analytics with R & Python",
+    description: "Statistical modelling and predictive analytics for working professionals stepping into a data role.",
+    price: "₹46,000",
+    priceNote: "+ GST · 5 months · Weekend cohort",
+    duration: "5 mo",
+    mode: "Weekend Bootcamp",
+    highlights: [{ label: "R" }, { label: "Python" }, { label: "Statistics" }],
+    ctaLabel: "Explore Course →",
+    variant: "compact",
+  },
+  {
+    id: "bd",
+    track: "Engineering",
+    badge: "Track 3",
+    title: "Big Data Engineering",
+    description: "Hadoop, Spark, and cloud data pipelines for the engineers who make analytics possible at scale.",
+    price: "₹62,000",
+    priceNote: "+ GST · 7 months · Live online",
+    duration: "7 mo",
+    mode: "Live Online",
+    highlights: [{ label: "Spark" }, { label: "Hadoop" }, { label: "AWS" }],
+    ctaLabel: "Explore Course →",
+    variant: "compact",
+  },
+  {
+    id: "cs",
+    track: "Cybersec",
+    badge: "New",
+    title: "Cybersecurity & Cloud Defence",
+    description: "Hands-on training in threat modelling, SOC operations, and cloud security across AWS and Azure.",
+    price: "₹54,000",
+    priceNote: "+ GST · 6 months · Weekend",
+    duration: "6 mo",
+    mode: "Weekend Online",
+    highlights: [{ label: "AWS" }, { label: "Azure" }, { label: "SOC" }],
+    ctaLabel: "Explore Course →",
+    variant: "compact",
+  },
+];
+
+const FILTERS = ["All", "Flagship", "Foundation", "Business", "Engineering", "Cybersec"];
+
+const Nav = () => (
+  <nav className="nav">
+    <div className="nav-inner">
+      <a href="#" className="nav-brand">
+        <span className="nav-brand-mark">AL</span>
+        AnalytixLabs
+      </a>
+      <div className="nav-links">
+        <a href="#courses">Courses</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#placements">Placements</a>
+        <a href="#blog">Blog</a>
+      </div>
+      <a href="#enroll" className="btn btn-pri nav-cta">Enquire ↗</a>
+      <button className="nav-burger" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+);
+
+const Hero = () => (
+  <section className="hero">
+    <div className="hero-badge">
+      <span className="dot"></span>
+      Nasscom · Batch enrolling now
+    </div>
+    <h1>The Last Data Course You'll Ever Need — <span className="text-gradient">With AI Built In.</span></h1>
+    <p>India's job market wants people who can build AI systems that think, act, and adapt. Pick a program built for that future.</p>
+    <div className="hero-stats">
+      <div><div className="hero-stat-num">10.5mo</div><div className="hero-stat-lbl">Structured program</div></div>
+      <div><div className="hero-stat-num">38</div><div className="hero-stat-lbl">Live expert sessions</div></div>
+      <div><div className="hero-stat-num">₹25L</div><div className="hero-stat-lbl">Senior salary potential</div></div>
+    </div>
+    <div className="hero-ctas">
+      <a href="#courses" className="btn btn-pri">Reserve My Seat ↗</a>
+      <a href="#curriculum" className="btn btn-sec">Explore the Curriculum</a>
+    </div>
+  </section>
+);
+
+const Courses = () => {
+  const [filter, setFilter] = useState("All");
+  const list = filter === "All" ? COURSES : COURSES.filter(c => c.track === filter);
+  const flagship = list.find(c => c.variant === "primary");
+  const featured = list.filter(c => c.variant === "secondary");
+  const compact = list.filter(c => c.variant === "compact");
+
+  return (
+    <section className="section" id="courses">
+      <div className="section-eyebrow">All Programs</div>
+      <h2 className="section-title">Pick the Track That Matches Your Ambition</h2>
+      <p className="section-desc">Every program is Nasscom-FutureSkills Prime certified and built around real industry projects. Tap a category to filter.</p>
+
+      <div className="filter-row" role="tablist">
+        {FILTERS.map(f => (
+          <button key={f}
+            className={"filter-chip" + (f === filter ? " is-active" : "")}
+            onClick={() => setFilter(f)}>{f}</button>
+        ))}
+      </div>
+
+      {(flagship || featured.length > 0) && (
+        <div className="course-grid" style={{marginBottom: 20}}>
+          {flagship && <CourseCard {...flagship} />}
+          {featured.map(c => <CourseCard key={c.id} {...c} />)}
+        </div>
+      )}
+
+      {compact.length > 0 && (
+        <div className="course-grid three">
+          {compact.map(c => <CourseCard key={c.id} {...c} />)}
+        </div>
+      )}
+
+      {list.length === 0 && (
+        <p style={{color: "var(--muted-light)", fontSize: "0.9rem"}}>No courses match that filter yet.</p>
+      )}
+    </section>
+  );
+};
+
+const Footer = () => (
+  <footer className="footer">
+    © {new Date().getFullYear()} AnalytixLabs · A Nasscom-FutureSkills Prime Certified Program
+  </footer>
+);
+
+const App = () => (
+  <>
+    <Nav />
+    <Hero />
+    <Courses />
+    <Footer />
+  </>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html><head><meta charset="utf-8" />
+<title>Section · Hero (Track Picker)</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="hero.css" />
+<style>
+  body { margin: 0; background: #ECF7FF; font-family: var(--font-body); }
+  .dc-host { position: fixed; inset: 0; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head><body>
+<div id="root" class="dc-host"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="hero.jsx"></script>
+<script type="text/babel" src="track-modal.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "headline": "default"
+}/*EDITMODE-END*/;
+
+function App() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  return (
+    <>
+      <DesignCanvas title="Hero · Track Picker" subtitle="Two layout variants for the right-side track-picker. Click a track card to open the conversational wizard.">
+        <DCSection id="variants" title="Layout Variants">
+          <DCArtboard id="diagonal" label="Variant A · Diagonal Stack" width={1200} height={760}>
+            <Hero variant="diagonal" headlineId={tweaks.headline} onOpenModal={() => setModalOpen(true)} />
+          </DCArtboard>
+          <DCArtboard id="platter" label="Variant B · Platter Grid" width={1200} height={760}>
+            <Hero variant="platter" headlineId={tweaks.headline} onOpenModal={() => setModalOpen(true)} />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="mobile" title="Mobile (responsive — 420w)">
+          <DCArtboard id="mobile-a" label="Variant A · Mobile" width={420} height={1080}>
+            <Hero variant="diagonal" headlineId={tweaks.headline} onOpenModal={() => setModalOpen(true)} />
+          </DCArtboard>
+          <DCArtboard id="mobile-b" label="Variant B · Mobile" width={420} height={1080}>
+            <Hero variant="platter" headlineId={tweaks.headline} onOpenModal={() => setModalOpen(true)} />
+          </DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Headline">
+          <TweakSelect
+            label="Try a headline"
+            value={tweaks.headline}
+            onChange={v => setTweak('headline', v)}
+            options={HEADLINE_OPTIONS.map(h => ({ value: h.id, label: `${h.primary} ${h.highlight}…` }))}
+          />
+        </TweakSection>
+        <TweakSection title="Modal">
+          <TweakButton onClick={() => setModalOpen(true)}>Open track wizard</TweakButton>
+        </TweakSection>
+      </TweaksPanel>
+
+      <TrackModal open={modalOpen} onClose={() => setModalOpen(false)} />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body></html>
